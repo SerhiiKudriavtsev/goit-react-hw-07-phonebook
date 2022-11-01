@@ -8,12 +8,12 @@ import { List, ListItem, Name, Number, Button, Text } from './ContactList.styled
 
 
 const ContactList = () => { 
-  const { data = [], isFetching } = useGetContactsQuery();
+  const { data = [], isLoading } = useGetContactsQuery();
   const [deleteContact] = useDeleteContactMutation();
 
   const filteredContacts = useSelector(state => state.filter.filter);
 
-  if (isFetching)
+  if (isLoading)
     return (
       <div>
         <RotatingLines

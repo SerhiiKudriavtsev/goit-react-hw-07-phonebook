@@ -5,19 +5,18 @@ import {Form, Div, Label, TitleForm, Input, Button} from './ContactForm.styled';
 
 export default function ContactForm() {
 
-  const [name, setName] = useState('');
+    const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const { data: contacts } = useGetContactsQuery();
     const [addContact] = useAddContactMutation();
-
-
+  
     const createContact = async user => {
         await addContact(user);
     };
 
 
     const cheakAddContact = name => {
-        const isValidate = contacts.find(item => item.name === name);
+        const isValidate = contacts.find(item => item.name.toLowerCase() === name.toLowerCase());
         isValidate && alert(`${name} is already in contacts`);
         return isValidate;
     };
